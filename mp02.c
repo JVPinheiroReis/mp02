@@ -11,7 +11,7 @@ int get_string_size(char *s) {
 void inverter(char *s) {
     int t = get_string_size(s);
 
-    char aux[10012];
+    char aux[10000 + 1];
 
     int j = 0;
     for (int i = t - 1; i >= 0; i--) {
@@ -47,17 +47,19 @@ void deslocar(char *s, int n) {
 }
 
 void trocarParesImpares(char *s) {
-    int t = get_string_size(s);
-    char aux[10012];
-    if (t % 2 != 0) {
-        for (int i = 0; i < t - 2; i += 2) {
+    int size = get_string_size(s);
+
+    char aux[10000 + 1];
+
+    if (size % 2 != 0) {
+        for (int i = 0; i < size - 2; i += 2) {
             aux[i] = s[i];
             s[i] = s[i + 1];
             s[i + 1] = aux[i];
         }
     }
     else {
-        for (int i = 0; i < t - 1; i += 2) {
+        for (int i = 0; i < size - 1; i += 2) {
             aux[i] = s[i];
             s[i] = s[i + 1];
             s[i + 1] = aux[i];
