@@ -30,37 +30,22 @@ void deslocar(char *s, int n) {
         if ('a' <= s[i] && s[i] <= 'z') {
             s[i] += n % 26;
 
-            if (s[i] < 'a') {
-                s[i] += 26;
-            }
-
-            if (s[i] > 'z') {
-                s[i] -= 26;
-            }
+            if (s[i] < 'a') s[i] += 26;
+            if (s[i] > 'z') s[i] -= 26;
         }
 
         if ('A' <= s[i] && s[i] <= 'Z') {
             s[i] += n % 26;
 
-            if (s[i] < 'A') {
-                s[i] += 26;
-            }
-
-            if (s[i] > 'Z') {
-                s[i] -= 26;
-            }
+            if (s[i] < 'A') s[i] += 26;
+            if (s[i] > 'Z') s[i] -= 26;
         }
 
         if ('0' <= s[i] && s[i] <= '9') {
             s[i] += n % 10;
 
-            if (s[i] < '0') {
-                s[i] += 10;
-            }
-
-            if (s[i] > '9') {
-                s[i] -= 10;
-            }
+            if (s[i] < '0') s[i] += 10;
+            if (s[i] > '9') s[i] -= 10;
         }
     }
 }
@@ -93,13 +78,8 @@ void inverterCaixa(char *s) {
     for (i = 0; s[i] != '\0'; i++) {
         c = s[i];
 
-        if ('a' <= c && c <= 'z') {
-            s[i] += 'A' - 'a';
-        }
-
-        if ('A' <= c && c <= 'Z') {
-            s[i] += 'a' - 'A';
-        }
+        if ('a' <= c && c <= 'z') s[i] += 'A' - 'a';
+        if ('A' <= c && c <= 'Z') s[i] += 'a' - 'A';
     }
 }
 
@@ -115,18 +95,18 @@ void rotacionar(char *s, int n) {
         tmp[i] = s[i];
     }
 
+    int j;
     for (i = 0; i < size; i++) {
-        if (i + n < 0) {
-            s[i + n + size] = tmp[i];
+        j = i + n;
+
+        if (j < 0) {
+            j += size;
+        }
+        if (j > size - 1) {
+            j -= size;
         }
 
-        else if (i + n <= size - 1) {
-            s[i + n] = tmp[i];
-        }
-
-        else {
-            s[i + n - size] = tmp[i];
-        }
+        s[j] = tmp[i];
     }
 }
 
@@ -156,38 +136,19 @@ int main(void) {
         scanf("%d", &op);
 
         switch (op) {
-            case 1:
-                inverter(s);
-
-                break;
+            case 1: inverter(s); break;
             case 2:
                 scanf("%d", &n);
-
                 deslocar(s, n);
-
                 break;
-            case 3:
-                trocarParesImpares(s);
-
-                break;
-            case 4:
-                inverterCaixa(s);
-
-                break;
+            case 3: trocarParesImpares(s); break;
+            case 4: inverterCaixa(s); break;
             case 5:
                 scanf("%d", &n);
-
                 rotacionar(s, n);
-
                 break;
-            case 6:
-                trocarMetades(s);
-
-                break;
-            case 0:
-                printf("%s\n", s);
-
-                return 0;
+            case 6: trocarMetades(s); break;
+            case 0: printf("%s\n", s); return 0;
         }
     }
 
