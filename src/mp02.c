@@ -25,27 +25,39 @@ void inverter(char *s) {
 }
 
 void deslocar(char *s, int n) {
-    int i;
+    int i, c;
     for (i = 0; s[i] != '\0'; i++) {
         if ('a' <= s[i] && s[i] <= 'z') {
-            s[i] += n % 26;
+            c = s[i];
 
-            if (s[i] < 'a') s[i] += 26;
-            if (s[i] > 'z') s[i] -= 26;
+            c += n % 26;
+
+            if (c < 'a') c += 26;
+            if (c > 'z') c -= 26;
+
+            s[i] = c;
         }
 
         if ('A' <= s[i] && s[i] <= 'Z') {
-            s[i] += n % 26;
+            c = s[i];
 
-            if (s[i] < 'A') s[i] += 26;
-            if (s[i] > 'Z') s[i] -= 26;
+            c += n % 26;
+
+            if (c < 'A') c += 26;
+            if (c > 'Z') c -= 26;
+
+            s[i] = c;
         }
 
         if ('0' <= s[i] && s[i] <= '9') {
-            s[i] += n % 10;
+            c = s[i];
 
-            if (s[i] < '0') s[i] += 10;
-            if (s[i] > '9') s[i] -= 10;
+            c += n % 10;
+
+            if (c < '0') c += 10;
+            if (c > '9') c -= 10;
+
+            s[i] = c;
         }
     }
 }
@@ -149,6 +161,7 @@ int main(void) {
                 break;
             case 6: trocarMetades(s); break;
             case 0: printf("%s\n", s); return 0;
+            default: return 0;
         }
     }
 
