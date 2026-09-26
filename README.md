@@ -30,12 +30,6 @@ Para executar o programa de forma interativa:
 ./mp02
 ```
 
-Ou através de redirecionamento de entrada (ideal para bater com casos de teste automatizados):
-
-```bash
-./mp02 < caso_teste.txt
-```
-
 ---
 
 ## Visão Geral do Sistema
