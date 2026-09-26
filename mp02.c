@@ -126,47 +126,47 @@ void trocarMetades(char *s) {
 
 int main(void) {
     int n;
-    char s[10000] = "";
+    char s[10000 + 1] = "";
 
-    scanf("%[^\n]", s);
+    scanf("%[^\n]%*c", s);
 
     int op;
     while (1) {
         scanf("%d", &op);
 
         switch (op) {
-        case 1:
-            inverter(s);
+            case 1:
+                inverter(s);
 
-            break;
-        case 2:
-            scanf("%d", &n);
+                break;
+            case 2:
+                scanf("%d", &n);
 
-            deslocar(s, n);
+                deslocar(s, n);
 
-            break;
-        case 3:
-            trocarParesImpares(s);
+                break;
+            case 3:
+                trocarParesImpares(s);
 
-            break;
-        case 4:
-            inverterCaixa(s);
+                break;
+            case 4:
+                inverterCaixa(s);
 
-            break;
-        case 5:
-            scanf("%d", &n);
+                break;
+            case 5:
+                scanf("%d", &n);
 
-            rotacionar(s, n);
+                rotacionar(s, n);
 
-            break;
-        case 6:
-            trocarMetades(s);
+                break;
+            case 6:
+                trocarMetades(s);
 
-            break;
-        case 0:
-            printf("%s\n", s);
+                break;
+            case 0:
+                printf("%s\n", s);
 
-            return 0;
+                return 0;
         }
     }
 
