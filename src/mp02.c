@@ -9,39 +9,58 @@ int get_string_size(char *s) {
 }
 
 void inverter(char *s) {
-    int t = get_string_size(s);
+    int size = get_string_size(s);
 
     char tmp[10000 + 1];
 
     int j = 0;
-    for (int i = t - 1; i >= 0; i--) {
+    for (int i = size - 1; i >= 0; i--) {
         tmp[j] = s[i];
         j++;
     }
 
-    for (int i = 0; i < t; i++)
+    for (int i = 0; i < size; i++) {
         s[i] = tmp[i];
+    }
 }
 
 void deslocar(char *s, int n) {
-    n = n % 26;
-
-    char c;
-
     int i;
     for (i = 0; s[i] != '\0'; i++) {
-        c = s[i];
+        if ('a' <= s[i] && s[i] <= 'z') {
+            s[i] += n % 26;
 
-        if ('a' <= c && c <= 'z') {
-            s[i] = c + n <= 'z' ? c + n : c + n - 26;
+            if (s[i] < 'a') {
+                s[i] += 26;
+            }
+
+            if (s[i] > 'z') {
+                s[i] -= 26;
+            }
         }
 
-        if ('A' <= c && c <= 'Z') {
-            s[i] = c + n <= 'Z' ? c + n : c + n - 26;
+        if ('A' <= s[i] && s[i] <= 'Z') {
+            s[i] += n % 26;
+
+            if (s[i] < 'A') {
+                s[i] += 26;
+            }
+
+            if (s[i] > 'Z') {
+                s[i] -= 26;
+            }
         }
 
-        if ('0' <= c && c <= '9') {
-            s[i] = c + n <= '9' ? c + n : c + n - 10;
+        if ('0' <= s[i] && s[i] <= '9') {
+            s[i] += n % 10;
+
+            if (s[i] < '0') {
+                s[i] += 10;
+            }
+
+            if (s[i] > '9') {
+                s[i] -= 10;
+            }
         }
     }
 }
@@ -87,7 +106,7 @@ void inverterCaixa(char *s) {
 void rotacionar(char *s, int n) {
     int size = get_string_size(s);
 
-    n = n % size;
+    n %= size;
 
     char tmp[size];
 
