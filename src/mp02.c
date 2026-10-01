@@ -13,13 +13,13 @@ void inverter(char *s) {
 
     char tmp[10000 + 1];
 
-    int j = 0;
-    for (int i = size - 1; i >= 0; i--) {
+    int i, j = 0;
+    for (i = size - 1; i >= 0; i--) {
         tmp[j] = s[i];
         j++;
     }
 
-    for (int i = 0; i < size; i++) {
+    for (i = 0; i < size; i++) {
         s[i] = tmp[i];
     }
 }
@@ -67,15 +67,16 @@ void trocarParesImpares(char *s) {
 
     char tmp[10000 + 1];
 
+    int i;
     if (size % 2 != 0) {
-        for (int i = 0; i < size - 2; i += 2) {
+        for (i = 0; i < size - 2; i += 2) {
             tmp[i] = s[i];
             s[i] = s[i + 1];
             s[i + 1] = tmp[i];
         }
     }
     else {
-        for (int i = 0; i < size - 1; i += 2) {
+        for (i = 0; i < size - 1; i += 2) {
             tmp[i] = s[i];
             s[i] = s[i + 1];
             s[i + 1] = tmp[i];
@@ -102,12 +103,11 @@ void rotacionar(char *s, int n) {
 
     char tmp[size];
 
-    int i;
+    int i, j;
     for (i = 0; i < size; i++) {
         tmp[i] = s[i];
     }
 
-    int j;
     for (i = 0; i < size; i++) {
         j = i + n;
 
